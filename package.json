@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/jaronrayj/friend_finder/issues"
   },
-  "homepage": "https://github.com/jaronrayj/friend_finder#readme"
+  "homepage": "https://github.com/jaronrayj/friend_finder#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }
