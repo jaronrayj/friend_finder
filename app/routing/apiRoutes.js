@@ -1,19 +1,23 @@
-const express = require("express");
 
-const app = express();
+var friends = require("../data/friends");
 
-app.get("/api/friends", function (req, res) {
-    return res.json(friends);
-});
+module.exports = function (app){
 
-app.post("/api/friends", function(req, res) {
-    var newFriend = req.body;
-  
-    console.log(newFriend);
-  
-    // todo Compatibility comparison setup
+    app.get("/api/friends", function (req, res) {
+        return res.json(friends);
+    });
+    
+    app.post("/api/friends", function(req, res) {
+        var newFriend = req.body;
+        
+        console.log(newFriend);
+        
+        // todo Compatibility comparison setup
+        
+        friends.push(newFriend);
+        
+        res.json(newFriend);
+    });
+    
+}
 
-    friends.push(newFriend);
-  
-    res.json(newFriend);
-  });
