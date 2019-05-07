@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Friend Finder</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../../assets/css/reset.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .form-control,
+        .form-control-range,
+        .number-set {
+            width: 60%;
+            margin
+        }
+
+        .form-control-range {
+            margin-left: -5px;
+        }
+
+        .number {
+            margin-right: 44%;
+            font-size: 12px;
+        }
+
+        .number2 {
+            font-size: 12px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+
+        <h1>Survey Questions</h1>
+        <hr>
+        <form>
+            <div class="form-group">
+                <label for="inputName">Name</label>
+                <input type="input" class="form-control" id="inputName" placeholder="Enter name" required>
+                <small id="nameHelp" class="form-text text-muted">Or what you like to be called.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="inputPic">Self Picture</label>
+                <input type="url" class="form-control" id="inputPic" aria-describedby="picHelp" required
+                    placeholder="Provide a nice picture of yourself">
+            </div>
+
+            <div class="form-group">
+                <label for="formControlRange">I like chocolate</label>
+                <input min="1" max="5" type="range" class="form-control-range" id="q1">
+                <p class="number-set"> <span class="number">Low</span><span class="number">Mid</span><span
+                        class="number2">High</span>
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label for="formControlRange">I love chocolate</label>
+                <input min="1" max="5" type="range" class="form-control-range" id="q2">
+                <p class="number-set"> <span class="number">Low</span><span class="number">Mid</span><span
+                        class="number2">High</span>
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label for="formControlRange">I dream about bathing in chocolate</label>
+                <input min="1" max="5" type="range" class="form-control-range" id="q3">
+                <p class="number-set"> <span class="number">Low</span><span class="number">Mid</span><span
+                        class="number2">High</span>
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label for="formControlRange">I like broccoli</label>
+                <input min="1" max="5" type="range" class="form-control-range" id="q4">
+                <p class="number-set"> <span class="number">Low</span><span class="number">Mid</span><span
+                        class="number2">High</span>
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label for="formControlRange">I love broccoli</label>
+                <input min="1" max="5" type="range" class="form-control-range" id="q5">
+                <p class="number-set"> <span class="number">Low</span><span class="number">Mid</span><span
+                        class="number2">High</span>
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label for="formControlRange">I dream of bathing in broccoli</label>
+                <input min="1" max="5" type="range" class="form-control-range" id="q6">
+                <p class="number-set"> <span class="number">Low</span><span class="number">Mid</span><span
+                        class="number2">High</span>
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label for="formControlRange">I like pineapple</label>
+                <input min="1" max="5" type="range" class="form-control-range" id="q7">
+                <p class="number-set"> <span class="number">Low</span><span class="number">Mid</span><span
+                        class="number2">High</span>
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label for="formControlRange">I love pineapple</label>
+                <input min="1" max="5" type="range" class="form-control-range" id="q8">
+                <p class="number-set"> <span class="number">Low</span><span class="number">Mid</span><span
+                        class="number2">High</span>
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label for="formControlRange">I dream of bathing in pineapples</label>
+                <input min="1" max="5" type="range" class="form-control-range" id="q9">
+                <p class="number-set"> <span class="number">Low</span><span class="number">Mid</span><span
+                        class="number2">High</span>
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label for="formControlRange">I just love food</label>
+                <input min="1" max="5" type="range" class="form-control-range" id="q10">
+                <p class="number-set"> <span class="number">Low</span><span class="number">Mid</span><span
+                        class="number2">High</span>
+                </p>
+            </div>
+
+            <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <br>
+        <span> <a href="/api/friends">API Friends list</a></span>
+        <span> | </span>
+        <span> <a href="https://github.com/jaronrayj/friend_finder" target="_blank">Github Repo</a></span>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script>
+        $("#submit").on("click", function () {
+
+            event.preventDefault();
+
+            let name = $("#inputName").val().trim();
+            let pic = $("#inputPic").val().trim();
+            let q1 = $("#q1").val();
+            let q2 = $("#q2").val();
+            let q3 = $("#q3").val();
+            let q4 = $("#q4").val();
+            let q5 = $("#q5").val();
+            let q6 = $("#q6").val();
+            let q7 = $("#q7").val();
+            let q8 = $("#q8").val();
+            let q9 = $("#q9").val();
+            let q10 = $("#q10").val();
+
+            let newFriend = {
+                name: name,
+                pic: pic,
+                score: [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10]
+            };
+
+
+            $("#inputName").val("");
+            $("#inputPic").val("");
+            $("#q1").val("3");
+            $("#q2").val("3");
+            $("#q3").val("3");
+            $("#q4").val("3");
+            $("#q5").val("3");
+            $("#q6").val("3");
+            $("#q7").val("3");
+            $("#q8").val("3");
+            $("#q9").val("3");
+            $("#q10").val("3");
+            console.log("TCL: newFriend", newFriend);
+
+            $.post("/api/friends", newFriend, function (data) {
+                if (data) {
+                    alert("Your new friend")
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
