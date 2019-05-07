@@ -67,16 +67,16 @@ module.exports = function (app) {
 }
 
 
-totalDifference;
+// totalDifference;
 
-for (var i = 0; i<friends.lengh; i++){
-    var currentFriend = friends[i];
-    totalDifference = 0;
+// for (var i = 0; i<friends.lengh; i++){
+//     var currentFriend = friends[i];
+//     totalDifference = 0;
 
-    for (let j = 0; j < currentFriend.score.length; j++) {
-        var currentFriendScore = currentFriend.score[j];
-        var currentUserScore = userScore[j];
+//     for (let j = 0; j < currentFriend.score.length; j++) {
+//         var currentFriendScore = currentFriend.score[j];
+//         var currentUserScore = userScore[j];
 
-        totalDifference += Math.abs(parseInt(currentUserScore) - Math.abs(parseInt(currentFriendScore)));
-    }
-}
+//         totalDifference += Math.abs(parseInt(currentUserScore) - Math.abs(parseInt(currentFriendScore)));
+//     }
+// }
