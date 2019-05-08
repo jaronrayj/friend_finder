@@ -8,10 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../../assets/css/reset.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../assets/css/style.css">
     <style>
         .form-control,
         .form-control-range,
@@ -36,6 +34,10 @@
         label {
             font-weight: bold;
         }
+
+        .pushLeft {
+            margin-left: 25%;
+        }
     </style>
 </head>
 
@@ -43,9 +45,10 @@
     <div class="container">
 
 
-        <h1>Survey Questions</h1>
+        <h1 id="title">Survey Questions</h1>
         <hr>
-        <form>
+        <div id="bff"></div>
+        <form id="form">
             <div class="form-group">
                 <label for="inputName">Name</label>
                 <input type="input" class="form-control" id="inputName" placeholder="Enter name" required>
@@ -138,13 +141,12 @@
                 </p>
             </div>
 
-            <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+            <button id="submit" type="submit" class="pushLeft btn btn-primary">Submit</button>
         </form>
         <br>
         <span> <a href="/api/friends">API Friends list</a></span>
         <span> | </span>
         <span> <a href="https://github.com/jaronrayj/friend_finder" target="_blank">Github Repo</a></span>
-
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -189,7 +191,15 @@
 
             $.post("/api/friends", newFriend, function (data) {
                 if (data) {
-                    alert("Your new friend")
+                    $("#form").hide();
+                    $("#title").text(`Your New BFF!`);
+                    var results = $("<div>");
+                    results.append("Here is the closest match to your flavor profile")
+                    results.append(`<p>Name: ${data.name}`)
+                    var img = $(`<img src=${data.pic}>`)
+                    var reset =
+                        `<p><button id="reset" class="pushLeft btn btn-primary">Try again?</button><button class="btn btn-primary" id="home">Go home</button></p>`
+                    $("#bff").show().append(results).append(img).append(reset);
                 }
             });
         });

@@ -16,67 +16,38 @@ module.exports = function (app) {
 
         let compareScore = 100;
 
+        let newFriendScore = addScores(newFriend.score);
+
+        let newBFF;
+
         for (let i = 0; i < friends.length; i++) {
 
-            let currentFriend = friends[i];
+            let currentFriendScore = addScores(friends[i].score);
 
-            newBestFriend(newFriend, currentFriend, compareScore)
 
-            compareScore = newBFF.score;
-            console.log("TCL: compareScore", compareScore);
+
+            let compareFriendScore = Math.abs(newFriendScore - currentFriendScore);
+            if (compareFriendScore < compareScore) {
+                compareScore = currentFriendScore
+                newBFF = friends[i];
+            }
 
         }
+
+        console.log(newFriend);
 
         friends.push(newFriend);
 
-        res.json(newFriend);
+        res.json(newBFF);
     });
 
-    function newBestFriend(newFriend, currentFriend, compareScore) {
-        let newFriend = newFriend;
-        let currentFriend = currentFriend
-        let combineFriendsScore = [];
-        let newBFF;
-
-        for (let i = 0; i < newFriend.score.length; i++) {
-            let newFriendQ = newFriend.score[i];
-            let currentFriendQ = currentFriend.score[i];
-
-            let combinedScore = Math.abs(newFriendQ - currentFriendQ);
-            combineFriendsScore.push(combinedScore);
+    function addScores(userScores) {
+        let combinedScore = 0;
+        for (let i = 0; i < userScores.length; i++) {
+            let currentScore = parseInt(userScores[i]);
+            combinedScore += currentScore;
         }
-
-        let friendTotal = 0;
-
-        for (let i = 0; i < combineFriendsScore.length; i++) {
-            friendTotal += combineFriendsScore[i];
-        }
-
-        if (friendTotal < compareScore) {
-            newBFF = {
-                currentFriend: currentFriend,
-                score: friendTotal
-            };
-            return newBFF;
-        } else {
-            return currentFriend;
-        }
-
-
+        return combinedScore;
     }
+
 }
-
-
-// totalDifference;
-
-// for (var i = 0; i<friends.lengh; i++){
-//     var currentFriend = friends[i];
-//     totalDifference = 0;
-
-//     for (let j = 0; j < currentFriend.score.length; j++) {
-//         var currentFriendScore = currentFriend.score[j];
-//         var currentUserScore = userScore[j];
-
-//         totalDifference += Math.abs(parseInt(currentUserScore) - Math.abs(parseInt(currentFriendScore)));
-//     }
-// }
