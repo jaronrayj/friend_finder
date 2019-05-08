@@ -148,6 +148,7 @@
         <span> | </span>
         <span> <a href="https://github.com/jaronrayj/friend_finder" target="_blank">Github Repo</a></span>
     </div>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <script>
@@ -198,9 +199,15 @@
                     results.append(`<p>Name: ${data.name}`)
                     var img = $(`<img src=${data.pic}>`)
                     var reset =
-                        `<p><button id="reset" class="pushLeft btn btn-primary">Try again?</button><button class="btn btn-primary" id="home">Go home</button></p>`
-                    $("#bff").show().append(results).append(img).append(reset);
+                        `<p><button id="reset" class="pushLeft btn btn-primary">Try again?</button>  <a href="/"><button class="btn btn-primary">Go home</button></a></p>`
+                    $("#bff").show().empty().append(results).append(img).append(reset);
                 }
+            });
+
+            $(document).on("click", "#reset", function () {
+                $("#bff").hide();
+                $("#form").show();
+                $("#inputName").focus();
             });
         });
     </script>
